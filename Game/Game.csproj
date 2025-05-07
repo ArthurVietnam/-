@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWindowsForms>true</UseWindowsForms>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>WinFormsApp1</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Update="Forms\Welcome.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Forms\UsernameInput.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Forms\Game.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Forms\StatsViewer.cs">
+        <SubType>Form</SubType>
+      </Compile>
+    </ItemGroup>
+
+</Project>
