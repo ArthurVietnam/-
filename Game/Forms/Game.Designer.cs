@@ -40,7 +40,7 @@ partial class Game
         guessButton = new Button();
         viewStatsButton = new Button();
         
-        difficultySelector.Items.AddRange(new string[] { "Easy(10)", "Medium(50)", "Hard(100)", "Insane(500)" });
+        difficultySelector.Items.AddRange(new string[] { "Easy(10)", "Medium(50)", "Hard(100)", "Insane(500)", "Imposible(1000)" });
         difficultySelector.SelectedIndex = 0;
         difficultySelector.Dock = DockStyle.Top;
         difficultySelector.SelectedIndexChanged += difficultySelector_SelectedIndexChanged;

@@ -25,6 +25,7 @@ public partial class Game : Form
             "Medium(50)" => (1, 50),
             "Hard(100)" => (1, 100),
             "Insane(500)" => (1, 500),
+            "Imposible(1000)" => (1,1000),
             _ => (1, 10)
         };
         target = rnd.Next(min, max + 1);
@@ -44,8 +45,16 @@ public partial class Game : Form
                     "Medium(50)" => 5,
                     "Hard(100)" => 10,
                     "Insane(500)" => 50,
+                    "Imposible(1000)" => -1,
                     _ => 1
                 };
+                
+                if (score == -1)
+                {
+                    var gameSession = StatsManager.GetUserSessions(Program.CurrentUsername);
+                    var sum = gameSession.Sum(g => g.Score);
+                    score = attempts <= 9 ? (sum > 100 ? 100 : sum * 2) : sum * -1;
+                }
 
                 StatsManager.SaveSession(new GameSession
                 {
