@@ -8,12 +8,12 @@ public partial class Game : Form
     private int target;
     private int attempts;
     private string difficulty;
-    private Random rng = new();
+    private Random rnd = new();
 
     public Game()
     {
         InitializeComponent();
-        difficulty = "Easy";
+        difficulty = "Easy(10)";
         GenerateNumber();
     }
 
@@ -21,13 +21,13 @@ public partial class Game : Form
     {
         (int min, int max) = difficulty switch
         {
-            "Easy" => (1, 10),
-            "Medium" => (1, 50),
-            "Hard" => (1, 100),
-            "Insane" => (1, 500),
+            "Easy(10)" => (1, 10),
+            "Medium(50)" => (1, 50),
+            "Hard(100)" => (1, 100),
+            "Insane(500)" => (1, 500),
             _ => (1, 10)
         };
-        target = rng.Next(min, max + 1);
+        target = rnd.Next(min, max + 1);
         attempts = 0;
     }
 
@@ -40,10 +40,10 @@ public partial class Game : Form
             {
                 int score = difficulty switch
                 {
-                    "Easy" => 1,
-                    "Medium" => 3,
-                    "Hard" => 5,
-                    "Insane" => 10,
+                    "Easy(10)" => 1,
+                    "Medium(50)" => 5,
+                    "Hard(100)" => 10,
+                    "Insane(500)" => 50,
                     _ => 1
                 };
 
@@ -60,9 +60,11 @@ public partial class Game : Form
             }
             else
                 MessageBox.Show(guess < target ? "Больше" : "Меньше");
+
         }
         else
             MessageBox.Show("Введите число!");
+        inputBox.Text = "";
     }
 
     private void difficultySelector_SelectedIndexChanged(object sender, EventArgs e)

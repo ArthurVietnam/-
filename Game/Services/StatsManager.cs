@@ -29,6 +29,7 @@ public class StatsManager
     public static List<GameSession> GetTopPlayers(int count = 10)
     {
         return Load()
+            .Where(s => s.Date >= DateTime.Now.AddMonths(-1))
             .GroupBy(s => s.Username)
             .Select(g => new { Username = g.Key, Total = g.Sum(s => s.Score) })
             .OrderByDescending(g => g.Total)
