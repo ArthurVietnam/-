@@ -1,5 +1,4 @@
-﻿using WinFormsApp1.Entity;
-using WinFormsApp1.Services;
+﻿using WinFormsApp1.Services;
 
 namespace WinFormsApp1.Forms;
 
