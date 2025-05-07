@@ -53,7 +53,7 @@ public partial class Game : Form
                 {
                     var gameSession = StatsManager.GetUserSessions(Program.CurrentUsername);
                     var sum = gameSession.Sum(g => g.Score);
-                    score = attempts <= 9 ? (sum > 100 ? 100 : sum * 2) : sum * -1;
+                    score = attempts <= 9 ? (sum > 100 ? 100 : sum * 2) : (sum == 0 ? 0 : sum * -1);
                 }
 
                 StatsManager.SaveSession(new GameSession
@@ -78,7 +78,7 @@ public partial class Game : Form
 
     private void difficultySelector_SelectedIndexChanged(object sender, EventArgs e)
     {
-        difficulty = difficultySelector.SelectedItem.ToString();
+        difficulty = difficultySelector.SelectedItem?.ToString() ?? "" ;
         GenerateNumber();
     }
     
