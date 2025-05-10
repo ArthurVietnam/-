@@ -33,22 +33,26 @@ partial class UsernameInput
     /// </summary>
     private void InitializeComponent()
     {
-        this.usernameBox = new TextBox();
-        this.continueButton = new Button();
+        usernameBox = new TextBox();
+        continueButton = new Button();
             
-        this.usernameBox.Dock = DockStyle.Top;
-        this.usernameBox.PlaceholderText = "Введите имя пользователя состоящее из 3ёх букв";
-        this.usernameBox.MaxLength = 3;
+        usernameBox.Dock = DockStyle.Top;
+        usernameBox.Height = 40;
+        usernameBox.PlaceholderText = "Введите имя пользователя состоящее из 3ёх букв";
+        usernameBox.MaxLength = 3;
+        usernameBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+        
+        continueButton.Text = "Продолжить";
+        continueButton.Dock = DockStyle.Top;
+        continueButton.Height = 30;
+        continueButton.Click += continueButton_Click;
 
-        this.continueButton.Text = "Продолжить";
-        this.continueButton.Dock = DockStyle.Top;
-        this.continueButton.Click += continueButton_Click;
-
-        this.Controls.Add(continueButton);
-        this.Controls.Add(usernameBox);
-        this.Text = "Имя игрока";
-        this.Width = 900;
-        this.Height = 600;
+        
+        Controls.Add(continueButton);
+        Controls.Add(usernameBox);
+        Text = "Имя игрока";
+        Width = 900;
+        Height = 600;
     }
 
     #endregion

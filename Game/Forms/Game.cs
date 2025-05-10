@@ -37,7 +37,23 @@ public partial class Game : Form
         if (int.TryParse(inputBox.Text, out int guess))
         {
             attempts++;
-            if (guess == target)
+
+            if (difficulty switch
+                {
+                    "Easy(10)" => 10,
+                    "Medium(50)" => 50,
+                    "Hard(100)" => 100,
+                    "Insane(500)" => 500,
+                    "Imposible(1000)" => 1000,
+                    _ => 10
+                }
+                >= attempts)
+            {
+                MessageBox.Show("Превышен лимит попыток для данного уровня, число сгенерированно заново");
+                GenerateNumber();
+            }
+            
+            else if (guess == target)
             {
                 int score = difficulty switch
                 {
@@ -48,12 +64,12 @@ public partial class Game : Form
                     "Imposible(1000)" => -1,
                     _ => 1
                 };
-                
+
                 if (score == -1)
                 {
                     var gameSession = StatsManager.GetUserSessions(Program.CurrentUsername);
                     var sum = gameSession.Sum(g => g.Score);
-                    score = attempts <= 9 ? (sum > 100 ? 100 : sum * 2) : (sum == 0 ? 0 : sum * -1);
+                    score = attempts <= 9 ? (sum < 100 ? 100 : sum * 2) : (sum == 0 ? 0 : sum * -1);
                 }
 
                 StatsManager.SaveSession(new GameSession
@@ -85,6 +101,11 @@ public partial class Game : Form
     private void viewStatsButton_Click(object sender, EventArgs e)
     {
         new StatsViewer().ShowDialog();
+    }
+
+    private void viewRulesButton_Click(object sender, EventArgs e)
+    {
+        new Rules().ShowDialog();
     }
 
 }

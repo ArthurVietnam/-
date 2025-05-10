@@ -10,6 +10,7 @@ partial class Welcome
     private IContainer components = null;
 
     private Button startButton;
+    private Label startLabel;
 
     /// <summary>
     /// Clean up any resources being used.
@@ -33,19 +34,27 @@ partial class Welcome
     /// </summary>
     private void InitializeComponent()
     {
-        
-        this.startButton = new Button();
-        this.SuspendLayout();
+        startLabel = new Label();
+        startButton = new Button();
+        SuspendLayout();
 
-        this.startButton.Text = "Начать";
-        this.startButton.Dock = DockStyle.Fill;
-        this.startButton.Click += new System.EventHandler(this.startButton_Click);
+        startButton.Text = "Начать";
+        startButton.Dock = DockStyle.Fill;
+        startButton.Click += new System.EventHandler(startButton_Click);
 
-        this.Controls.Add(this.startButton);
-        this.Text = "Угадай число";
-        this.Width = 900;
-        this.Height = 600;
-        this.ResumeLayout(false);
+        startLabel.Text = "Угадай число";
+        startLabel.Dock = DockStyle.Top;
+        startLabel.Height = 100;
+        startLabel.TextAlign = ContentAlignment.MiddleCenter;
+        startLabel.BackColor = Color.Crimson;
+        startLabel.Font = new Font("Segoe UI", 32F, FontStyle.Bold);
+
+        Controls.Add(startLabel);
+        Controls.Add(startButton);
+        Text = "Угадай число";
+        Width = 900;
+        Height = 600;
+        ResumeLayout(false);
     }
 
     #endregion

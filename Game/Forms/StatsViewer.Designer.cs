@@ -37,13 +37,18 @@ partial class StatsViewer
         statsGrid = new DataGridView
         {
             Dock = DockStyle.Fill,
+            Height = 40,
+            Font = new Font("Segoe UI", 12F, FontStyle.Bold),
             ReadOnly = true,
+            ColumnHeadersHeight = 40,
             AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         };
 
         viewSelector = new ComboBox
         {
             Dock = DockStyle.Top,
+            Height = 40,
+            Font = new Font("Segoe UI", 12F, FontStyle.Bold),
             DropDownStyle = ComboBoxStyle.DropDownList
         };
         viewSelector.Items.AddRange(new[] { "Топ игроков", "Моя статистика" });
@@ -55,6 +60,7 @@ partial class StatsViewer
             Text = "Обновить",
             Dock = DockStyle.Top
         };
+        refreshButton.Height = 30;
         refreshButton.Click += (s, e) => RefreshStats();
 
         Controls.Add(statsGrid);
