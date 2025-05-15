@@ -47,7 +47,7 @@ public partial class Game : Form
                     "Imposible(1000)" => 1000,
                     _ => 10
                 }
-                >= attempts)
+                <= attempts)
             {
                 MessageBox.Show("Превышен лимит попыток для данного уровня, число сгенерированно заново");
                 GenerateNumber();
